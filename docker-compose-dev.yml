@@ -1,0 +1,89 @@
+---
+version: '3.5' 
+
+networks:
+  confluent-dev:
+    name: confluent-dev
+
+services: 
+  zk1:
+    image: cnfltraining/ansible:7.2
+    hostname: zk1.dev.confluent
+    container_name: zk1.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  kafka-0:
+    image: cnfltraining/ansible:7.2
+    hostname: kafka-0.dev.confluent
+    container_name: kafka-0.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  kafka-1:
+    image: cnfltraining/ansible:7.2
+    hostname: kafka-1.dev.confluent
+    container_name: kafka-1.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  kafka-2:
+    image: cnfltraining/ansible:7.2
+    hostname: kafka-2.dev.confluent
+    container_name: kafka-2.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  schema-registry:
+    image: cnfltraining/ansible:7.2
+    hostname: schema-registry.dev.confluent
+    container_name: schema-registry.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  control-center:
+    image: cnfltraining/ansible:7.2
+    hostname: control-center.dev.confluent
+    container_name: control-center.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    ports:
+      - "9021:9021"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  kafka-connect:
+    image: cnfltraining/ansible:7.2
+    hostname: kafka-connect.dev.confluent
+    container_name: kafka-connect.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  ksqldb:
+    image: cnfltraining/ansible:7.2
+    hostname: ksqldb.dev.confluent
+    container_name: ksqldb.dev.confluent
+    networks:
+      - confluent-dev
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro

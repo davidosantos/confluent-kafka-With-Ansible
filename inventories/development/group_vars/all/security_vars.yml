@@ -1,0 +1,34 @@
+# Encrypt properties files at rest
+secrets_protection_enabled: true
+# Encrypt passwords in listener sasl.jaas.config properties
+kafka_broker_secrets_protection_encrypt_properties:
+  - listener.name.broker.plain.sasl.jaas.config
+  - listener.name.internal.plain.sasl.jaas.config
+
+
+# In this development environment,
+#   we use SASL/PLAIN authentication with no authorization
+
+sasl_protocol: plain
+
+# See https://github.com/confluentinc/cp-ansible/blob/6.1.1-post/roles/confluent.variables/defaults/main.yml#L974
+#   for the expected keys of the sasl_plain_users dictionary.
+sasl_plain_users:
+  admin:
+    principal: 'kafka'
+    password: "{{ vault_kafka_password }}"
+  client:
+    principal: 'client'
+    password: "{{ vault_client_password }}"
+  schema_registry:
+    principal: 'schema-registry'
+    password: "{{ vault_schema_registry_password }}"
+  kafka_connect:
+    principal: 'kafka-connect'
+    password: "{{ vault_kafka_connect_password }}"
+  ksql:
+    principal: 'ksqldb'
+    password: "{{ vault_ksql_password }}"
+  control_center:
+    principal: 'control-center'
+    password: "{{ vault_control_center_password }}"

@@ -1,0 +1,9 @@
+zookeeper:zk1.prod.confluent
+kafka_broker:kafka-0.prod.confluent
+kafka_broker:kafka-1.prod.confluent
+kafka_broker:kafka-2.prod.confluent
+schema_registry:schema-registry.prod.confluent
+kafka_connect:kafka-connect.prod.confluent
+ksql:ksqldb.prod.confluent
+control_center:control-center.prod.confluent
+ldap_server:ldap.prod.confluent

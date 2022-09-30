@@ -1,0 +1,54 @@
+all:
+  vars:
+    ansible_connection: docker
+    ansible_user: root
+    ansible_become: true
+    env: production
+
+ldap_server:
+  hosts:
+    ldap.prod.confluent:
+
+zookeeper:
+  hosts:
+    zk1.prod.confluent:
+
+kafka_broker:
+  hosts:
+    kafka-0.prod.confluent:
+      kafka_broker_custom_properties:
+        broker.rack: us-east-1a
+      ## If you wanted to advertise the listener called "client" (not supported in lab environment)
+      # kafka_broker_custom_listeners:
+      #   client:
+      #     hostname: kafka-0-external.prod.confluent
+    kafka-1.prod.confluent:
+      kafka_broker_custom_properties:
+        broker.rack: us-east-1b
+      ## If you wanted to advertise the listener called "client" (not supported in lab environment)
+      # kafka_broker_custom_listeners:
+      #   client:
+      #     hostname: kafka-1-external.prod.confluent
+    kafka-2.prod.confluent:
+      kafka_broker_custom_properties:
+        broker.rack: us-east-1c
+      # # If you wanted to advertise the listener called "client" (not supported in lab environment)
+      # kafka_broker_custom_listeners:
+      #   client:
+      #     hostname: kafka-2-external.prod.confluent
+
+schema_registry:
+  hosts:
+    schema-registry.prod.confluent:
+
+kafka_connect:
+  hosts:
+    kafka-connect.prod.confluent:
+
+ksql:
+  hosts:
+    ksqldb.prod.confluent:
+
+control_center:
+  hosts:
+    control-center.prod.confluent:
