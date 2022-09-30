@@ -3,9 +3,9 @@
 #   to generate certificates
 ssl_enabled: true
 ssl_custom_certs: true
-ssl_ca_cert_filepath: "/home/training/course/certs/generated_ssl_files/ca.crt"
-ssl_signed_cert_filepath: "/home/training/course/certs/generated_ssl_files/{{inventory_hostname}}-ca1-signed.crt"
-ssl_key_filepath: "/home/training/course/certs/generated_ssl_files/{{inventory_hostname}}-key.pem"
+ssl_ca_cert_filepath: "{{ lookup('env', 'PWD') }}/certs/generated_ssl_files/ca.crt"
+ssl_signed_cert_filepath: "{{ lookup('env', 'PWD') }}/certs/generated_ssl_files/{{inventory_hostname}}-ca1-signed.crt"
+ssl_key_filepath: "{{ lookup('env', 'PWD') }}/certs/generated_ssl_files/{{inventory_hostname}}-key.pem"
 ssl_key_password: "{{ vault_ssl_key_password }}"
 
 # For demonstration purposes, we use the same truststore password
