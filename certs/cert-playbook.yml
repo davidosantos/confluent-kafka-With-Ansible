@@ -27,7 +27,7 @@
         dest: "/var/ssl/private/generation/{{ item|basename }}"
         mode: 0777
       loop:
-        - {{ lookup('env','HOME') }}.ansible/collections/ansible_collections/confluent/platform/molecule/certs-create.sh
+        - "{{ lookup('env','HOME') }}".ansible/collections/ansible_collections/confluent/platform/molecule/certs-create.sh
 
     - name: Create certificate hosts file
       block:
