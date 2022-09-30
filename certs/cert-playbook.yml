@@ -27,7 +27,7 @@
         dest: "/var/ssl/private/generation/{{ item|basename }}"
         mode: 0777
       loop:
-        - /home/training/.ansible/collections/ansible_collections/confluent/platform/molecule/certs-create.sh
+        - ~/.ansible/collections/ansible_collections/confluent/platform/molecule/certs-create.sh
 
     - name: Create certificate hosts file
       block:
@@ -37,7 +37,7 @@
             dest: "/var/ssl/private/generation/{{ item|basename }}"
             mode: 0777
           loop:
-            - "/home/training/course/inventories/{{ env }}/certificate-hosts"
+            - ".inventories/{{ env }}/certificate-hosts"
       rescue:
         - shell: touch /var/ssl/private/generation/certificate-hosts
 
