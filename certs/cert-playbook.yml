@@ -37,7 +37,7 @@
             dest: "/var/ssl/private/generation/{{ item|basename }}"
             mode: 0777
           loop:
-            - "./inventories/{{ env }}/certificate-hosts"
+            - "inventories/{{ env }}/certificate-hosts"
       rescue:
         - shell: touch /var/ssl/private/generation/certificate-hosts
 
